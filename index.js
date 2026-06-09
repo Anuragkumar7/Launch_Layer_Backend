@@ -33,6 +33,14 @@ app.use(
 
 app.use(express.json({ limit: '10kb' }));
 
+app.get('/', (_req, res) => {
+  res.json({
+    success: true,
+    message: 'Launch Layer API is running',
+    endpoints: { health: '/api/health', contact: 'POST /api/contact' },
+  });
+});
+
 app.get('/api/health', (_req, res) => {
   res.json({ success: true, message: 'Launch Layer API is running' });
 });
